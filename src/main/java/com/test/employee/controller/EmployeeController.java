@@ -35,6 +35,13 @@ public class EmployeeController {
 	
 	private static final int ZERO =0 ;
 	
+	/**
+     * Get an active employee by id.
+     *
+     * @param employeeId
+     * 
+     * @return employee
+     */
 	@GetMapping("/{employeeId}")
 	public ResponseEntity<?> getEmployee(@PathVariable(value="employeeId") Integer employeeId) throws APIException {
 		logger.info("Entering Controller layer at getEmployee, employeeID to search:{}", employeeId);
@@ -49,6 +56,11 @@ public class EmployeeController {
 		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 	
+	/**
+     * Get a list of active employees.
+     *
+     * @return employeeList
+     */
 	@GetMapping("/active-employees")
 	public ResponseEntity<?> getActiveEmployees() throws APIException {
 		logger.info("Entering Controller layer at getActiveEmployees");
@@ -59,6 +71,11 @@ public class EmployeeController {
 		return new ResponseEntity<>(employeeList, HttpStatus.OK);
 	}
 	
+	/**
+     * Get employees and filter active employees.
+     *
+     * @return employeeList
+     */
 	@GetMapping("/employees")
 	public ResponseEntity<?> getEmployees() throws APIException {
 		logger.info("Entering Controller layer at getEmployees");
@@ -69,6 +86,14 @@ public class EmployeeController {
 		return new ResponseEntity<>(employeeList, HttpStatus.OK);
 	}
 	
+	/**
+     * Save/Create a new employee if the loggedEmployee has rights.
+     * 
+     * @param loggedEmployeeId
+     * @param employeeToSave
+     *
+     * @return 
+     */
 	@PostMapping("/create-employee/{loggedEmployeeId}")
 	public ResponseEntity<?> saveEmployee(@PathVariable(value="loggedEmployeeId") Integer loggedEmployeeId,
 			@RequestBody Employee employeeToSave) throws APIException {
@@ -96,6 +121,14 @@ public class EmployeeController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
+	/**
+     * Update existing employee if the loggedEmployee has rights.
+     * 
+     * @param loggedEmployeeId
+     * @param employeeToUpdate
+     *
+     * @return 
+     */
 	@PutMapping("/update-employee/{loggedEmployeeId}")
 	public ResponseEntity<?> updateEmployee(@PathVariable(value="loggedEmployeeId") Integer loggedEmployeeId,
 			@RequestBody Employee employeeToUpdate) throws APIException {
@@ -124,6 +157,14 @@ public class EmployeeController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	/**
+     * Logical delete an existing employee if the loggedEmployee has rights.
+     * 
+     * @param loggedEmployeeId
+     * @param employeeIdToDelete
+     *
+     * @return 
+     */
 	@DeleteMapping("/delete-employee/{loggedEmployeeId}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable(value="loggedEmployeeId") Integer loggedEmployeeId,
 			@RequestHeader(value = "employee-id-to-delete") Integer employeeIdToDelete) throws APIException {
