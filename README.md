@@ -23,3 +23,4 @@ Service will serve the following petitions;
 3. Project has a DDL under resources which will be executed automatically upon project starts (DB need to be running) which has the instructions to DROP `tbl_Employee` if exists, recreate it and fill it with some records to test the service, if you don't want it to be executed delete the following props in HibernateConfiguration.java;
   * hibernate.hbm2ddl.auto
   * hibernate.hbm2ddl.import_files
+4. Review the DDL script to corroborate you have the same table structure you have in your own table (tbl_Employee), if you plan to use a different table structure modifications must be done.
