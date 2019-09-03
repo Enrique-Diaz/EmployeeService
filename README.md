@@ -19,7 +19,7 @@ Service will serve the following petitions;
 
 # Things to consider
 1. Modify the path for the logger in the src/main/resources/logback.xml
-2. Update the src/main/resources/application.properties to connecto to the DB (MySql Ver 14.14 Distrib 5.7.11, for osx10.9 (x86_64))
-3. Project has a DDL under resources which will be executed upon project starts (DB need to be running) which has the instructions to DROP `tbl_Employee` if exists, recreate it and fill it with some records to test the service, if you don't want it to be executed take out the following props HibernateConfiguration.java;
+2. Update the src/main/resources/application.properties to connecto to the DB (Version I used is MySql Ver 14.14 Distrib 5.7.11, for osx10.9 (x86_64))
+3. Project has a DDL under resources which will be executed automatically upon project starts (DB need to be running) which has the instructions to DROP `tbl_Employee` if exists, recreate it and fill it with some records to test the service, if you don't want it to be executed delete the following props in HibernateConfiguration.java;
   * hibernate.hbm2ddl.auto
   * hibernate.hbm2ddl.import_files
